@@ -1,11 +1,30 @@
 from app import app
+from flask import render_template, url_for
+
+
 
 @app.route('/')
 @app.route('/index') 
 @app.route('/test')
 
 def index():
-    return "hello, worlddad?????"
+    user = {
+        'username': "Melvin"
+    }
+    quotes_i_like = [
+        {
+            'author': {'username': "mum"}, 'text' : "he means well"
+        },
+        {
+            'author': {'username': "me"}, 'text' : "mathamagiciaon"
+        },
+        {
+            'author': {'username': "dad"}, 'text' : "maths is fun"
+        }
 
-def test():
-    return "hi this is our test page"
+    ]
+    return render_template("index.html", title="melvins page", user=user, quotes=quotes_i_like)
+
+
+
+
